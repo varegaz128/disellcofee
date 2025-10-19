@@ -106,7 +106,7 @@ body {
 
 .navbar .navbar-extra a {
   color: #f4eded;
-  margin: 10px;
+  margin: 5px;
 }
 .navbar .navbar-extra a:hover {
   color: var(--Primary);
@@ -510,8 +510,7 @@ footer .credit a {
     display: inline-block;
   }
 
-  .navbar .navbar-extra a {
-    margin: 10px;
+  
   }
   .navbar .navbar-nav {
     position: absolute;
