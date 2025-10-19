@@ -21,6 +21,10 @@ body {
 /* Navbar */
 .navbar {
   display: flex;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   justify-content: space-between;
   align-items: center;
   padding: 0rem 7%;
@@ -46,15 +50,9 @@ body {
 .navbar .navbar-logo span {
   color: var(--Primary);
 }
+
 .navbar .navbar-nav a {
-  color: #800c0c;
-  display: inline-block;
-  font-size: 1.3rem;
-  margin: 0 1rem;
-  transition: color 0.3s;
-}
-.navbar .navbar-nav a {
-  color: #f4eded;
+  color: #fff;
   display: inline-block;
   font-size: 1.3rem;
   margin: 0 1rem;
@@ -64,32 +62,48 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 500;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
-/* Efek hover futuristik */
+/* Efek kilat merah */
 .navbar .navbar-nav a::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 1.5rem;
-  background: linear-gradient(135deg, #ff4d4d, #b02e20);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 0, 0, 0.7) 0%,
+    rgba(255, 0, 0, 0.2) 60%,
+    transparent 100%
+  );
   opacity: 0;
   transform: scale(0.8);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   z-index: -1;
 }
 
+/* Saat hover: kilat cepat */
 .navbar .navbar-nav a:hover {
-  color: white;
+  color: rgb(255, 180, 180);
   transform: translateY(-2px);
 }
 
 .navbar .navbar-nav a:hover::before {
   opacity: 1;
-  transform: scale(1);
-  box-shadow: 0 0 15px rgba(203, 37, 31, 0.5);
+  transform: scale(1.4);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
+/* Saat hover lepas — kilat menghilang cepat */
+.navbar .navbar-nav a:not(:hover)::before {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
 .navbar .navbar-extra a {
   color: #f4eded;
   margin: 10px;
@@ -100,8 +114,13 @@ body {
 #hamburger-menu {
   display: none;
 }
+
 /* Hero section */
 .hero {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -164,6 +183,10 @@ body {
 .contact,
 .menu {
   padding: 8rem 7% 1.4rem;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 .about h2,
 .contact h2,
@@ -354,6 +377,20 @@ body {
   box-shadow: 0 0 15px rgba(209, 42, 8, 0.3);
   margin: 0 auto 1rem auto;
 }
+.menu .row .menu-card img,
+.menu .row .menu-card {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.menu .row .menu-card:active,
+.menu .row .menu-card img:active {
+  background: none;
+  transform: none;
+  box-shadow: none;
+}
 
 /* === Gambar di dalam border bisa diatur ukurannya per gambar === */
 .menu .row .menu-card img {
@@ -361,6 +398,7 @@ body {
   cursor: pointer;
   object-fit: contain;
   -webkit-user-drag: none;
+  max-width: 100%;
 }
 
 /* tiktok icon */
@@ -471,6 +509,7 @@ footer .credit a {
   #hamburger-menu {
     display: inline-block;
   }
+
   .navbar .navbar-extra a {
     margin: 10px;
   }
@@ -528,73 +567,7 @@ footer .credit a {
 @media (max-width: 450px) {
   html {
     font-size: 55%;
-  }
-
-  .hero .content h1 {
-    font-size: 3.2rem;
-  }
-
-  .hero .content p {
-    font-size: 1.2rem;
-    line-height: 1.8rem;
-  }
-
-  .hero .content .cta {
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
-  }
-
-  .menu .row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-  }
-
-  .menu .menu-card {
-    min-width: 150px;
-  }
-
-  .contact .row iframe.map {
-    height: 250px;
-  }
-
-  .contact .row {
-    flex-direction: column;
-  }
-
-  .contact .row form {
-    padding: 2rem 1rem;
-  }
-
-  footer .links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  footer .socials {
-    flex-wrap: wrap;
-  }
-
-  footer .socials a {
-    margin: 0.5rem;
-  }
-  .menu .menu-img-container {
-    width: 120px;
-    height: 120px;
-  }
-
-  .menu .menu-card img {
-    width: 80% !important;
-  }
-
-  .menu .menu-card-tittle {
-    font-size: 1rem;
-  }
-
-  .menu .menu-card-price {
-    font-size: 0.9rem;
+    display: inline-block;
   }
 }
 
