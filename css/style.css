@@ -92,6 +92,7 @@ body {
 }
 .navbar .navbar-extra a {
   color: #f4eded;
+  margin: 10px;
 }
 .navbar .navbar-extra a:hover {
   color: var(--Primary);
@@ -469,6 +470,9 @@ footer .credit a {
   }
   #hamburger-menu {
     display: inline-block;
+  }
+  .navbar .navbar-extra a {
+    margin: 10px;
   }
   .navbar .navbar-nav {
     position: absolute;
