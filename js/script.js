@@ -63,6 +63,6 @@ Email: ${email}%0A
 Nomor HP: ${nomor}%0A
 Terima kasih 🙏`;
 
-  const whatsappUrl = `https://wa.me/6281080335428?text=${pesan}`;
+  const whatsappUrl = `https://wa.me/62881080335428?text=${pesan}`;
   window.open(whatsappUrl, "_blank");
 }
