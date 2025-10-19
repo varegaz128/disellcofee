@@ -90,7 +90,9 @@ body {
   transform: scale(1);
   box-shadow: 0 0 15px rgba(203, 37, 31, 0.5);
 }
-
+.navbar .navbar-extra a {
+  color: #f4eded;
+}
 .navbar .navbar-extra a:hover {
   color: var(--Primary);
 }
@@ -449,7 +451,7 @@ footer .credit p {
 }
 
 footer .credit a {
-  color: var(--bg);
+  color: rgba(255, 65, 108, 0.8);
   font-weight: 700;
 }
 
@@ -518,15 +520,77 @@ footer .credit a {
     padding-top: 0;
   }
 }
-/* Mobile */
+/* Mobile Fix */
 @media (max-width: 450px) {
   html {
     font-size: 55%;
   }
-  body {
+
+  .hero .content h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero .content p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+
+  .hero .content .cta {
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .menu .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+  }
+
+  .menu .menu-card {
+    min-width: 150px;
+  }
+
+  .contact .row iframe.map {
+    height: 250px;
+  }
+
+  .contact .row {
+    flex-direction: column;
+  }
+
+  .contact .row form {
+    padding: 2rem 1rem;
+  }
+
+  footer .links {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  footer .socials {
+    flex-wrap: wrap;
+  }
+
+  footer .socials a {
+    margin: 0.5rem;
+  }
+  .menu .menu-img-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .menu .menu-card img {
+    width: 80% !important;
+  }
+
+  .menu .menu-card-tittle {
+    font-size: 1rem;
+  }
+
+  .menu .menu-card-price {
+    font-size: 0.9rem;
   }
 }
 
