@@ -65,4 +65,28 @@ Terima kasih 🙏`;
 
   const whatsappUrl = `https://wa.me/62881080335428?text=${pesan}`;
   window.open(whatsappUrl, "_blank");
-}
+} // Popup Gambar Menu
+const popup = document.getElementById("menuPopup");
+const popupImage = document.getElementById("popupImage");
+const popupTitle = document.getElementById("popupTitle");
+const popupPrice = document.getElementById("popupPrice");
+const closePopup = document.getElementById("closePopup");
+
+document.querySelectorAll(".menu-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    const img = card.querySelector("img").src;
+    const title = card.querySelector(".menu-card-tittle").textContent;
+    const price = card.querySelector(".menu-card-price").textContent;
+
+    popupImage.src = img;
+    popupTitle.textContent = title;
+    popupPrice.textContent = price;
+    popup.classList.add("active");
+  });
+});
+
+// Tutup popup saat klik tombol X atau area luar konten
+closePopup.addEventListener("click", () => popup.classList.remove("active"));
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) popup.classList.remove("active");
+});
