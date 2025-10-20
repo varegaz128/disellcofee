@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0d0d0d, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Efek Partikel */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.05) 10%,
+    transparent 70%
+  );
+  animation: pulse 5s infinite alternate;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+.auth-container {
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid rgba(255, 50, 50, 0.4);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+  border-radius: 20px;
+  padding: 50px 40px;
+  width: 400px;
+  text-align: center;
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-box h1 {
+  font-size: 2rem;
+  color: #ff4d4d;
+  text-shadow: 0 0 15px rgba(255, 50, 50, 0.6);
+  margin-bottom: 10px;
+}
+
+.auth-box p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  color: #aaa;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group input:valid {
+  border-bottom-color: #ff4d4d;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  left: 5px;
+  font-size: 0.8rem;
+  color: #ff4d4d;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #ff4d4d, #b02e20);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+}
+
+.switch {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.switch a {
+  color: #ff4d4d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch a:hover {
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+}
+/* === OVERLAY === */
+.user-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
+}
+
+/* === POPUP CONTAINER === */
+.user-popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 350px;
+  background: linear-gradient(
+    160deg,
+    rgba(15, 15, 15, 0.95),
+    rgba(40, 0, 0, 0.9)
+  );
+  border: 1px solid rgba(255, 60, 60, 0.6);
+  box-shadow: 0 0 25px rgba(255, 30, 30, 0.3),
+    0 0 60px rgba(255, 0, 0, 0.1) inset;
+  border-radius: 20px;
+  padding: 40px 30px;
+  color: #fff;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  animation: popupShow 0.4s ease forwards;
+  position: relative;
+}
+
+/* === TITLE === */
+.user-popup-content h3 {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #ff3b3b;
+  text-shadow: 0 0 12px rgba(255, 60, 60, 0.8);
+  margin-bottom: 10px;
+}
+
+.user-popup-content h3 span {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.user-popup-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* === CLOSE BUTTON === */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #ff4d4d;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+  transform: scale(1.2);
+}
+
+/* === BUTTON GROUP === */
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.user-btn {
+  background: none;
+  border: 2px solid #ff3b3b;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* === NEON EFFECT === */
+.user-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff5050, #d10000);
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: -1;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255, 50, 50, 0.7);
+}
+
+.user-btn:hover::before {
+  opacity: 1;
+}
+
+.user-btn:hover {
+  transform: scale(1.07);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(255, 50, 50, 0.6);
+}
+
+/* === LOGIN & REGISTER COLOR VARIATION === */
+.user-btn.login {
+  border-color: #ff4040;
+}
+
+.user-btn.register {
+  border-color: #ff8080;
+}
+
+/* === ANIMASI === */
+@keyframes popupShow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* === BONUS GLOW BORDER === */
+.user-popup-content::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(45deg, #ff4040, #ff0000, #ff4040);
+  z-index: -1;
+  opacity: 0.4;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
