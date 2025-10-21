@@ -1,6 +1,10 @@
 <?php
 session_start();
+session_unset();
 session_destroy();
-header("Location: ../index.html");
+echo json_encode(['success' => true]);
+
+// Arahkan kembali ke halaman utama
+header("Location: ../index.php");
 exit();
 ?>

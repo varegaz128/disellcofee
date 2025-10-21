@@ -1,28 +1,37 @@
 <?php
-session_start();
-include 'db.php';
+include("koneksi.php");
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    session_start();
 
-  $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-  $stmt->bind_param("s", $email);
-  $stmt->execute();
-  $result = $stmt->get_result();
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
 
-  if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+    // Ambil data user berdasarkan kolom username
+    $sql = "SELECT * FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (password_verify($password, $user['password'])) {
-      $_SESSION['user_id'] = $user['id'];
-      $_SESSION['user_name'] = $user['nama'];
-      echo "success";
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        // Verifikasi password
+        if (password_verify($password, $row['password'])) {
+            // Simpan data ke session
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['user_id'] = $row['id'];
+
+            echo "<script>alert('Login berhasil! Selamat datang, {$row['username']}'); window.location.href='../index.php';</script>";
+        } else {
+            echo "<script>alert('Password salah!'); window.history.back();</script>";
+        }
     } else {
-      echo "Password salah!";
+        echo "<script>alert('Username tidak ditemukan!'); window.history.back();</script>";
     }
-  } else {
-    echo "Email tidak ditemukan!";
-  }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>

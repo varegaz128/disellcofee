@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,18 +37,35 @@
         <a href="#contact">Kontak</a>
       </div>
       <div class="navbar-extra">
-  <a href="#" id="search"><i data-feather="search"></i></a>
-  <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-  <a href="#" id="user-icon"><i data-feather="user"></i></a>
+  <?php if (isset($_SESSION['username'])): ?>
+    <div class="user-menu">
+      <button class="username-display" id="userMenuBtn">
+        👤 <?php echo htmlspecialchars($_SESSION['username']); ?>
+        <i data-feather="chevron-down" class="arrow-icon"></i>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div class="user-dropdown" id="userDropdown">
+        <a href="profile.php" class="dropdown-item">Akun</a>
+        <a href="php/logout.php" class="dropdown-item">Logout</a>
+      </div>
+    </div>
+  <?php else: ?>
+    <a href="#" id="user-icon"><i data-feather="user"></i></a>
+    <div id="user-popup" class="user-popup">
+      <div class="user-popup-content">
+        <span class="close-btn" id="closeUserPopup">&times;</span>
+        <h3>Selamat Datang!</h3>
+        <button class="user-btn" onclick="window.location.href='login.html'">Login</button>
+        <button class="user-btn" onclick="window.location.href='register.html'">Daftar</button>
+      </div>
+    </div>
+  <?php endif; ?>
+
   <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-  <div id="user-popup" class="user-popup">
-  <div class="user-popup-content">
-    <span class="close-btn" id="closeUserPopup">&times;</span>
-    <h3>Selamat Datang!</h3>
-    <button class="user-btn" onclick="window.location.href='login.html'">Login</button>
-    <button class="user-btn" onclick="window.location.href='daftar.html'">Daftar</button>
-  </div>
 </div>
+
+
       <!-- Popup Poster untuk Menu -->
 <div id="menu-poster" class="menu-poster">
   <div class="menu-poster-content">
@@ -286,5 +306,29 @@
 
     <!--My Javascript  -->
     <script src="js/script.js"></script>
+    <script>
+  const userMenuBtn = document.getElementById('userMenuBtn');
+  const userDropdown = document.getElementById('userDropdown');
+
+  if (userMenuBtn && userDropdown) {
+    userMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // cegah tutup langsung
+      userDropdown.style.display =
+        userDropdown.style.display === 'block' ? 'none' : 'block';
+      userMenuBtn.classList.toggle('active');
+    });
+
+    // Klik di luar dropdown → tutup menu
+    window.addEventListener('click', (e) => {
+      if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+        userDropdown.style.display = 'none';
+        userMenuBtn.classList.remove('active');
+      }
+    });
+  }
+
+  feather.replace();
+</script>
+
   </body>
 </html>

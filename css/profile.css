@@ -1,0 +1,77 @@
+/* profile.css */
+:root {
+  --Primary: #d12a08;
+  --bg: #010101;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --text: #fff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.navbar .navbar-logo img {
+  height: 40px;
+}
+
+.username-display {
+  color: #fff;
+  margin-right: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile {
+  padding: 8rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.profile h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.profile-box {
+  background: var(--card-bg);
+  margin: 1.5rem auto;
+  max-width: 420px;
+  padding: 1.6rem;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.profile-box p {
+  margin: 0.6rem 0;
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.8rem 1.4rem;
+  background: var(--Primary);
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  opacity: 0.9;
+}
